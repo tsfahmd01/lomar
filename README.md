@@ -69,22 +69,21 @@ from keras.utils import to_categorical
 lomar-main/
 ├── Dataset/
 │   └── mnist.csv            # MNIST handwritten digit dataset (28x28)
-├── model/                   # Client-side trained models (generated at runtime)
-│   ├── cnn_weights.keras    # Genuine model weights
-│   └── poison_weights.keras # Poisoned model weights (label-flipping attack)
+├── model/                   # Client-side trained models
+│   ├── cnn_weights.keras    # Genuine model weights (generated at runtime)
+│   └── poison_weights.keras # Poisoned model weights (generated at runtime)
 ├── globalModel/
-│   └── model.keras          # Global model accepted by the server
+│   └── model.keras          # Global model accepted by the server (generated at runtime)
 ├── Main.py                  # Client GUI application (Tkinter)
 ├── Server.py                # Centralized federated learning server
 ├── run_headless.py          # Headless script for automated simulation
-├── model_size_comparision.png    # Results: model compression comparison
-├── no_defence_vs_lomar_accuracy.png  # Results: accuracy comparison
-├── run.bat                  # Windows runner script
-├── runServer.bat            # Windows server startup script
+├── Results
+|   └── model_size_comparision.png    # Results: model compression comparison
+|   └── no_defence_vs_lomar_accuracy.png  # Results: accuracy comparison
 └── README.md
 ```
 
-> **Note:** The `model/` and `globalModel/` folders are initially empty in a fresh clone. They are populated at runtime — `model/` stores trained client models and `globalModel/` stores the server's aggregated global model. The `.keras` weight files are generated during execution and are not version-controlled.
+> **Note:** The `model/` and `globalModel/` folders are initially empty in a fresh clone. They are populated at runtime, `model/` stores trained client models and `globalModel/` stores the server's aggregated global model. The `.keras` weight files are generated during execution and are not version-controlled.
 
 ---
 
@@ -123,7 +122,7 @@ The following chart compares the test accuracy of a model trained on poisoned da
 
 The server uses Kernel Density Estimation (KDE) on extracted features and accuracy thresholds to distinguish genuine updates from poisoned ones, rejecting malicious model updates while accepting legitimate ones.
 
-### 2. Communication Efficiency — Model Size Compression
+### 2. Communication Efficiency: Model Size Compression
 
 To reduce communication overhead in federated learning, model weights are compressed using `zlib` before transmission. The chart below compares the original and compressed model sizes:
 
