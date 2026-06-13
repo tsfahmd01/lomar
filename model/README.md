@@ -1,1 +1,1 @@
-# This folder is intially supposed to be empty
+# This folder is intially empty
