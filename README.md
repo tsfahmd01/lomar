@@ -115,7 +115,7 @@ From the GUI, you can:
 
 The following chart compares the test accuracy of a model trained on poisoned data (label-flipping attack, no defense) against the genuine model used under the LoMar defense mechanism:
 
-![No Defense vs LoMar Accuracy](no_defence_vs_lomar_accuracy.png)
+![No Defense vs LoMar Accuracy](Results/no_defence_vs_lomar_accuracy.png)
 
 - **No Defense (Poisoned Model):** The model trained on a label-flipped dataset and uploaded without defense.
 - **LoMar Defense (Genuine Model):** The clean model accepted by the server after passing the LoMar anomaly detection check.
@@ -126,7 +126,7 @@ The server uses Kernel Density Estimation (KDE) on extracted features and accura
 
 To reduce communication overhead in federated learning, model weights are compressed using `zlib` before transmission. The chart below compares the original and compressed model sizes:
 
-![Model Size Comparison](model_size_comparision.png)
+![Model Size Comparison](Results/model_size_comparision.png)
 
 - **Original Model:** The raw `.keras` weights file before compression.
 - **Compressed (zlib):** The same weights compressed using zlib, significantly reducing the payload size.
